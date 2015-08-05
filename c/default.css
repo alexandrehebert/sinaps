@@ -1,0 +1,437 @@
+
+body {
+}
+
+body, div, p, table, td, textarea, label, select, option, input, fieldset, legend {
+    font-family: "Courier new";
+    padding: 0px;
+    margin: 0px;
+    font-size: 12px;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: line-through;
+}
+
+#body {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	z-index: -2;
+    background: url('../i/snake-wp.png') no-repeat center/*50px*/ center;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+legend {
+    margin-left: -7px;
+}
+
+fieldset {
+    border: none;
+    border-top: 1px solid #CCC;
+    margin-bottom: 25px;
+    padding-top: 5px;
+	padding-left: 15px;
+}
+
+input[type=checkbox] {
+	margin: 2px;
+}
+
+td {
+	vertical-align: middle;
+}
+
+input, select, textarea, button {
+    font-size: 12px;
+	vertical-align: middle;
+	outline: none;
+}
+
+input[type=text], input[type=button], select {
+    border: 1px solid transparent;
+}
+
+input[type=checkbox] {
+	display: inline-block;
+	height: 8px;
+	vertical-align: bottom;
+}
+
+input[type=range] {
+	/* border: none; */
+}
+
+select {
+	width: 95%;
+}
+
+ul {
+	list-style-type: circle;
+	margin-left: 0px;
+	padding-left: 5px;
+}
+
+li {
+	margin-left: 0px;
+}
+
+#header, #footer {
+    width: 100%;
+}
+
+#versions {
+	margin: auto;
+    font-weight: bold;
+    margin-bottom: 3px;
+    font-size: 14px;
+    height: 20px;
+}
+
+#versions table {
+    width: 100%;
+    text-align: center;
+}
+
+#versions table td {
+    height: 20px;
+}
+
+#versions table td.not-current {
+    text-decoration: line-through;
+	color: #578F00;
+}
+
+#header {
+	font-weight: bold;
+    text-align: left;
+	/*border-bottom: 1px dashed #578F00;*/
+	background-color: #578F00;
+	color: white;
+	margin-bottom: 20px;
+}
+
+#header a {
+	color: white;
+	display: block;
+	padding: 10px;
+}
+
+#footer {
+    text-align: right;
+	position: absolute;
+	bottom: 0px;
+	border-top: 1px dashed #578F00;
+	background: white url('../i/logo-gray.png') no-repeat -8px center;
+	height: 48px;
+}
+
+#footer div, #header div {
+	margin: auto;
+}
+
+#footer div {
+	padding: 18px;
+	padding-right: 12px;
+}
+
+#content {
+	margin-top: 0px;
+	margin-bottom: 10px;
+}
+
+#snake {
+	z-index: 10;
+    border: 1px solid transparent;
+}
+
+.snake-logo {
+	position: fixed;
+	z-index: -1;
+	top: 0;
+	bottom: 0;
+	width: 40px;
+    background: url('../i/header-2.png') repeat 0 0;
+}
+
+#snake-logo-left {
+	left: 5px;
+}
+
+#snake-logo-right {
+	right: 5px;
+}
+
+#snake-snake {
+    background: url('../i/header.png') no-repeat right center;
+	z-index: 1;
+	position: fixed;
+	margin: auto;
+	left: 50%;
+	margin-top: 13px;
+	margin-left: 122px;
+	width: 120px;
+	height: 40px;
+}
+
+#snake-center-wrapper {
+    background-color: white;
+    position: fixed;
+	z-index: 1;
+	left: 50px;
+	top: 0;
+	bottom: 0;
+    border: 1px solid #578F00;
+	border-top: none;
+	border-bottom: none;
+    width: 350px;
+}
+
+#snake-center {
+	position: absolute;
+	padding-top: 20px;
+	top: 35px;
+	bottom: 35px;
+	left: 0px;
+	right: 0px;
+	overflow: auto;
+}
+
+#snake-right {
+    border: 1px solid #578F00;
+	border-top: none;
+	border-bottom: none;
+    position: fixed;
+	z-index: 1;
+	right: 50px;
+	top: 0;
+	bottom: 0;
+	width: 350px;
+}
+
+#snake-talk-wrapper {
+	position: absolute;
+    border: none;
+	border-top: 1px dashed #578F00;
+	width: 100%;
+	top: 222px;
+	bottom: 0;
+}
+
+#snake-talk {
+	width: 100%;
+	height: 100%;
+}
+
+#snake-talk > div {
+	border: 1px solid #CCC;
+	position: absolute;
+	left: 0px;
+	right: 0px;
+	margin: 9px;
+}
+
+#snake-talk .snake-talk-output {
+	bottom: 30px;
+	top: 0;
+	overflow: auto;
+}
+
+#snake-talk .snake-talk-input {
+	height: 20px;
+	bottom: 0;
+}
+
+#snake-talk .snake-talk-output .snake-talk-output-textarea-wrapper {
+	padding: 5px;
+}
+
+.snake-talk-output-textarea-wrapper div p {
+	line-height: 140%;
+	padding: 0px;
+}
+
+.snake-talk-input input {
+    background: url('../i/prompt.png') no-repeat center left;
+    border: none;
+	height: 19px;
+	width: 95%;
+	padding-left: 5%;
+}
+
+#snake-players {
+    margin: 10px;
+    height: 200px;
+}
+
+.snake-list {
+    font-size: 12px;
+    border: 1px solid #CCC;
+    width: 50%;
+    overflow: auto;
+	float: left;
+}
+
+.snake-games-list {
+    height: 84%;
+    width: 100%;
+}
+
+.snake-players-list {
+    height: 100%;
+}
+
+.snake-games-wrapper {
+    float: left;
+    padding-left: 4%;
+    height: 100%;
+    width: 45%;
+}
+
+.snake-games-manage {
+    border: 1px solid #CCC;
+	margin-top: 10px;
+    width: 100%;
+    float: left;
+}
+
+.snake-games-manage input[type=text] {
+    width: 80%;
+	height: 18px;
+}
+
+.snake-games-manage input[type=button] {
+	height: 20px;
+	width: 20px;
+	background-color: white;
+	float: right;
+}
+
+.snake-games-manage input[type=button]:hover {
+	background-color: #EEE;
+}
+
+.snake-list > .snake-item {
+    min-height: 13px;
+    padding: 5px;
+    border-top: 1px solid #CCC;
+}
+
+.snake-list > .snake-item:first-child {
+    border-top: none;
+}
+
+.snake-list > .snake-item:hover {
+    background-color: #EEE;
+}
+
+.snake-list > .snake-item ul {
+	list-style-type: square;
+    margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+.snake-list > .snake-item ul li {
+	margin-left: 10px;
+}
+
+#snake-game {
+	z-index: 99;
+	background-color: white;
+    border: 1px solid #578F00;
+    margin: auto;
+	margin-top: 40px;
+	padding-top: 5px;
+	min-width: 412px;
+	display: inline-block;
+}
+
+.snake-toast {
+    font-weight: bold;
+    z-index: 101;
+    position: absolute;
+    width: 390px;
+    height: 40px;
+    margin-top: 80px;
+    text-align: center;
+    color: black;
+    background-color: white;
+    display: none;
+    padding: 5px;
+    -khtml-opacity:0.75;
+    -moz-opacity : 0.75;
+    -ms-filter: "alpha(opacity=75)";
+    filter: progid:DXImageTransform.Microsoft.Alpha(opacity=75);
+    filter : alpha(opacity=75);
+    opacity : 0.75;
+}
+
+.snake-toast > p {
+    padding: 10px;
+	font-size: 15px;
+}
+
+.snake-game-wrapper {
+    margin: auto;
+	text-align: left;
+}
+
+.snake-game-wrapper > .snake-game, .snake-area {
+    border: none;
+    border: 1px solid black;
+    background: url('../i/context.png') repeat;
+    margin: 5px;
+	min-height: 200px;
+}
+
+.snake-game-wrapper canvas {
+	z-index: 100;
+	width: 0px;
+	height: 0px; /** loading level will change these values */
+	background-color: black; 
+	margin: 0; padding: 0; 
+	border: none;
+	image-rendering: optimizeSpeed;
+	image-rendering: -moz-crisp-edges;
+	image-rendering: -webkit-optimize-contrast;
+	image-rendering: -o-crisp-edges;
+	image-rendering: optimize-contrast;
+	-ms-interpolation-mode: nearest-neighbor;
+}
+
+.snake-panel {
+	z-index: 1;
+	background-color: white;
+    -khtml-opacity: 0.80;
+    -moz-opacity: 0.80;
+    -ms-filter: "alpha(opacity=80)";
+    filter: progid:DXImageTransform.Microsoft.Alpha(opacity=80);
+    filter: alpha(opacity=80);
+    opacity: 0.8;
+}
+
+#modal {
+	display: none;
+	position: fixed;
+	z-index: 1000;
+	background-color: black;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+    -khtml-opacity:0.5;
+    -moz-opacity : 0.5;
+    -ms-filter: "alpha(opacity=50)";
+    filter: progid:DXImageTransform.Microsoft.Alpha(opacity=50);
+    filter : alpha(opacity=50);
+    opacity : 0.50;
+}

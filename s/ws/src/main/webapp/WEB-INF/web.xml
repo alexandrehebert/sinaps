@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+  <servlet>
+    <servlet-name>SnakePoint</servlet-name>
+    <servlet-class>fr.djx.snake.ws.SnakePoint</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SnakePoint</servlet-name>
+    <url-pattern>/ws/SnakePoint</url-pattern>
+  </servlet-mapping>
+  <listener>
+    <listener-class>fr.djx.snake.ws.SnakeContextListener</listener-class>
+  </listener>
+</web-app>

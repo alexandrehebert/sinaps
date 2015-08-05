@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Webillogic SINAPS</title>
+	
+	<link rel="stylesheet" href="c/default.css" />
+    
+	<link rel="icon" href="i/logo.png" type="image/png" />
+    <meta itemprop="image" content="i/logo.png" />
+    
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="j/jquery.json-2.4.min.js"></script>
+	<script src="j/jquery.indexeddb.js"></script>
+	<script src="j/jcanvas.min.js"></script>
+    
+    <script src="j/snake.tools.js"></script>
+    <script src="j/snake.events.js"></script>
+    <script src="j/snake.biz.js"></script>
+    <script src="j/snake.ui.js"></script>
+	
+    <script src="j/snake.run.offline.js"></script>
+    <script src="j/snake.run.websocket.js"></script>
+	
+    <script src="j/snake.map.js"></script>
+	
+	<base href="/snake/" />
+    
+    <script>
+
+		var VERSION = 4;
+		var versionLabels = ['Rayttle','Byoa','Mambay','Pyton','Vyper'];
+        
+		$(function() {
+			
+			/*if (navigator.geolocation) {
+				navigator.geolocation.getCurrentPosition(function (position) {
+					$('#localisation').text("lat=" + position.coords.latitude + ", long=" + position.coords.longitude);
+				});
+			}*/
+			
+		});
+        
+    </script>
+    
+</head>
+
+<body>
+
+    <div id="body"></div>
+
+	<div id="snake">
+	
+		<div id="snake-logo-left" class="snake-logo"></div>
+		<div id="snake-logo-right" class="snake-logo"></div>
+		<div id="snake-snake"></div>
+		<div id="modal"></div>
+	
+		<div id="snake-center-wrapper" class="snake-panel">
+			
+			<div id="header">
+				
+				<div class="header">
+					<a href="./" title="SINAPS - Home"> SINAPS Is Not A Plain Snake </a>
+				</div>
+				
+			</div>
+			
+			<div id="snake-center">
+				
+				<div id="content">
+			
+					<fieldset>
+						<legend>Mod :</legend>
+						<select name="snake-mod">
+							<option value="snake" checked="checked" />Snake : normal multiplayer mod</option>
+							<option value="snude" />Snude : survival mod</option>
+							<option value="snuke" disabled="disabled" />Snuke : [soon] bomberman mod</option>
+							<option disabled="disabled" />Snack : [soon] atomic food mod</option>
+							<option disabled="disabled" />Smoke : [soon] ghost mod</option>
+						</select>
+					</fieldset>
+					
+					<fieldset>
+						<legend>Level :</legend>
+						<select name="snake-level">
+							<option value="" selected="selected">...</option>
+							<optgroup label="[10*10]">
+								<option value="6">Labyrinthe</option>
+							</optgroup>
+							<optgroup label="[20*20]">
+								<option value="1">Désert</option>
+								<option value="2">Portals 1</option>
+								<option value="3">Portals 2</option>
+								<option value="10">Labyrinthe 2</option>
+								<option value="11">Copyrights</option>
+								<option value="12">Maya</option>
+							</optgroup>
+							<optgroup label="[2X*2X]">
+								<option value="7">Bomberman</option>
+								<option value="8">Circuit imprimé</option>
+								<option value="13">Liste chaînée 2</option>
+							</optgroup>
+							<optgroup label="[40*20]">
+								<option value="4">Rubans</option>
+								<option value="9">Liste chaînée</option>
+							</optgroup>
+							<optgroup label="[40*40]">
+								<option value="5">Extra-large</option>
+							</optgroup>
+						</select>
+					</fieldset>
+					
+					<fieldset>
+						<legend>
+							Online :
+						</legend>
+						<ul>
+							<li>Status : <input type="checkbox" name="snake-talk-enable" id="snake-talk-enable" /> <label for="snake-talk-enable">Off</label></li>
+							<li>Ping : <span id="ping">-</span> ms</li>
+							<li>Endpoint : 
+							<select name="snake-server-url">
+								<option value="ws://ze0pw0da:18888/snake-1.0-SNAPSHOT/ws/SnakePoint">ws://erdf-standalone</option>
+								<option value="ws://163.113.138.108:18888/snake/ws/SnakePoint">ws://erdf</option>
+								<option value="ws://locahost:8888/snake/ws/SnakePoint">ws://localhost</option>
+							</select></li>
+						</ul>
+					</fieldset>
+					
+					<fieldset>
+						<legend>
+							Others :
+						</legend>
+						<ul>
+							<li>Step generation : <span id="steps">-</span> ms</li>
+							<li>Map scale : <input style="width: 50px;" type="range" name="snake-map-scale" min="100" max="200" /> <span id="snake-scale" style="color: gray;"></span></li>
+							<li>Localisation : <span id="localisation">-</span></li>
+						</ul>
+					</fieldset>
+					
+				</div>
+			
+			</div>
+			
+			<div id="footer">
+				
+				<div class="footer">
+					2013 &copy; Digix / 
+					SINAPS Is Not A Plain Snake
+				</div>
+				
+			</div>
+			
+		</div>
+		
+		<div style="text-align: center;">
+		<div id="snake-game">
+			
+			<div id="versions">
+				<table>
+					<tr><script type="text/javascript">
+						for (var i in versionLabels)
+							document.write((i == VERSION ? '<td>' : '<td class="not-current">') + versionLabels[i] + '</td>');
+					</script></tr>
+				</table>
+			</div>
+			
+			<div class="snake-game-wrapper">
+				<div class="snake-game" id="snake-map-area">
+					<div class="snake-toast">
+						<p></p>
+					</div>
+					<canvas id="snake-map-area"></canvas>
+				</div>
+			</div>
+			
+		</div>
+		</div>
+		
+		<div class="snake-panel" id="snake-right">
+			
+			<div id="snake-players">
+				<div class="snake-list snake-players-list"></div>
+				<div class="snake-games-wrapper">
+					<div class="snake-list snake-games-list"></div>
+					<div class="snake-games-manage">
+						<input type="text" class="snake-game-name" name="snake-game-name" /> 
+						<input type="button" class="snake-game-manage" name="snake-game-manage" value="+" />
+					</div>
+				</div>
+				<div style="clear: left;"></div>
+			</div>
+		
+			<div id="snake-talk-wrapper" class="snake-talk">
+				<div id="snake-talk">
+					<div id="snake-talk-output" class="snake-talk-output">
+						<div class="snake-talk-output-textarea-wrapper">
+								<p id="snake-talk-output-textarea">
+									
+								</p>
+							<!--<textarea id="snake-talk-output" name="snake-talk-output" readonly></textarea>-->
+						</div>
+					</div>
+					<div class="snake-talk-input"><input name="snake-talk-input" type="text" /></div>
+				</div>
+			</div>
+			
+		</div>
+		
+	</div>
+
+</body>
+
+</html>

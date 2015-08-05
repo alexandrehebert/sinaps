@@ -1,0 +1,421 @@
+
+body {
+}
+
+body, div, p, table, td, textarea, label, select, option, input, fieldset, legend {
+    font-family: "Courier new";
+    padding: 0px;
+    margin: 0px;
+    font-size: 12px;
+}
+
+legend {
+    margin-left: 5px;
+}
+
+fieldset {
+    border: none;
+    border-top: 1px dashed green;
+    margin-bottom: 15px;
+    padding-top: 5px;
+	padding-left: 10px;
+}
+
+input[type=checkbox] {
+	margin: 2px;
+}
+
+td {
+	vertical-align: middle;
+}
+
+input, select, textarea, button {
+    font-size: 12px;
+}
+
+input, select {
+    border: 1px solid transparent;
+}
+
+ul {
+	list-style-type: none;
+	margin-left: 0px;
+	padding-left: 5px;
+}
+
+li {
+	margin-left: 0px;
+}
+
+#body {
+	z-index: -10;
+    background: url('../i/snake-wp.png') no-repeat center center;
+    position: fixed;
+	overflow: auto;
+    top:0;
+    left:0;
+    right:0;
+	bottom: 0;
+}
+
+#header, #footer {
+}
+
+#header {
+    height: 20px;
+    font-weight: bold;
+    margin-bottom: 3px;
+    font-size: 14px;
+}
+
+#header table {
+    width: 100%;
+    text-align: center;
+}
+
+#footer {
+	z-index: -1;
+    padding-top: 10px;
+    font-size: 12px;
+    text-align: right;
+    clear: left;
+	position: fixed;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+    -khtml-opacity: 0.80;
+    -moz-opacity: 0.80;
+    -ms-filter: "alpha(opacity=80)";
+    filter: progid:DXImageTransform.Microsoft.Alpha(opacity=80);
+    filter: alpha(opacity=80);
+    opacity: 0.8;
+}
+
+#footer div.footer {
+	margin: auto;
+    border-top: 1px solid green;
+    border-left: 1px solid green;
+    border-right: 1px solid green;
+    width: 434px;
+	background-color: white;
+}
+
+#footer div.footer p {
+	padding: 10px;
+	padding-bottom: 7px;
+}
+
+#content {
+	margin-top: 20px;
+	margin-bottom: 10px;
+}
+
+#snake {
+	z-index: 10;
+    width: 1198px;
+    border: 1px solid transparent;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 50px;
+    -khtml-opacity: 0.80;
+    -moz-opacity: 0.80;
+    -ms-filter: "alpha(opacity=80)";
+    filter: progid:DXImageTransform.Microsoft.Alpha(opacity=80);
+    filter: alpha(opacity=80);
+    opacity: 0.8;
+}
+
+#snake > #snake-header-logo {
+    z-index: -5;
+    position: absolute;
+    top: 21px;
+    width: 1034px;
+    height: 60px;
+}
+
+#snake-header-logo > div {
+    background: url('../i/header.png') no-repeat 0 0;
+    width: 40px;
+    height: 40px;
+    float: left;
+}
+
+#snake-header-logo > #snake-header-head {
+    background-position: -80px -0px;
+}
+
+#snake-header-logo > .snake-header-body {
+    background-position: -40px -0px;
+}
+
+#snake-header-logo > #snake-header-queue {
+    background-position: -0px -0px;
+}
+
+#snake-left, #snake-right {
+    z-index: 5;
+    margin-top: 30px;
+    background-color: white;
+}
+
+#snake-left {
+    position: relative;
+    float: left;
+    border: 1px solid green;
+    border-right: 1px solid white;
+    width: 380px;
+    margin-right: -1px;
+}
+
+#snake-center {
+    margin: 10px;
+}
+
+#snake-center-wrapper {
+    /* z-index: -1; */
+    background-color: white;
+    position: relative;
+    float: left;
+    border: 1px solid green;
+    width: 434px;
+}
+
+#snake-right {
+    position: relative;
+    float: left;
+    border: 1px solid green;
+    border-left: 1px solid white;
+    width: 380px;
+    margin-left: -1px;
+}
+
+#snake-game {
+    clear: left;
+    margin: auto;
+    border: 1px dashed green;
+}
+
+#snake-talk {
+    border: none;
+}
+
+#fix-margin {
+	height: 7px;
+}
+
+#snake-talk .snake-talk-output {
+    margin: 10px;
+    border: 1px solid #DDD;
+    height: 170px;
+}
+
+#snake-talk .snake-talk-input {
+    margin: 10px;
+}
+
+#snake-talk .snake-talk-output > .snake-talk-output-textarea-wrapper {
+    border: none;
+    background-color: transparent;
+    width: 100%;
+    height: 96%;
+    padding: 0px;
+}
+
+#snake-talk .snake-talk-output-textarea-wrapper > div {
+    border: none;
+    background-color: transparent;
+    width:96%;
+    height:96%;
+    padding:2%;
+	overflow: auto;
+	line-height: 140%;
+}
+
+#snake-talk .snake-talk-input > table {
+	padding: 0px;
+	margin: -5px;
+    border-spacing: 5px;
+    border-collapse: separate;
+}
+
+#snake-talk .snake-talk-input table td {
+	border: 1px solid #DDD;
+}
+
+#snake-talk .snake-talk-input select, #snake-talk .snake-talk-input input {
+    border: none;
+}
+
+#snake-talk .snake-talk-input td:last-child input {
+    width: 358px;
+}
+
+#snake-players {
+    margin: 10px;
+    width: 360px;
+    height: 200px;
+}
+
+#snake-infos {
+	border: none; 
+	background-color: white;
+}
+
+#snake-infos td {
+	padding: 5px;
+	border-left: 1px dashed green;
+}
+
+#snake-infos td:first-child {
+    width: 50px;
+	border-left: none;
+    padding-left: 0px;
+}
+
+#snake-infos td:last-child {
+    width: 50px;
+    padding-right: 0px;
+    text-align: right;
+}
+
+.snake-list {
+    font-size: 12px;
+    border: 1px solid #DDD;
+    width: 173px;
+    overflow: auto;
+}
+
+.snake-games-list {
+    height: 84%;
+}
+
+.snake-players-list {
+    float: left;
+    height: 100%;
+}
+
+.snake-games-wrapper {
+    padding-left: 10px;
+    float: left;
+    height: 100%;
+}
+
+.snake-games-manage {
+    border: 1px solid #DDD;
+	margin-top: 10px;
+    width: 173px;
+    float: left;
+}
+
+.snake-games-manage input[type=text] {
+	width: 144px;
+}
+
+.snake-games-manage input[type=button] {
+	height: 20px;
+	width: 20px;
+	background-color: white;
+}
+
+.snake-games-manage input[type=button]:hover {
+	background-color: #EEE;
+}
+
+.snake-list > .snake-item {
+    min-height: 13px;
+    padding: 5px;
+    border-top: 1px solid #DDD;
+}
+
+.snake-list > .snake-item:first-child {
+    border-top: none;
+}
+
+.snake-list > .snake-item:hover {
+    background-color: #EEE;
+}
+
+.snake-list > .snake-item ul {
+	list-style-type: square;
+    margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+.snake-list > .snake-item ul li {
+	margin-left: 10px;
+}
+
+.snake-toast {
+    font-weight: bold;
+    z-index: 10;
+    position: absolute;
+    width: 390px;
+    height: 40px;
+    margin-top: 80px;
+    text-align: center;
+    color: black;
+    background-color: white;
+    display: none;
+    padding: 5px;
+    -khtml-opacity:0.75;
+    -moz-opacity : 0.75;
+    -ms-filter: "alpha(opacity=75)";
+    filter: progid:DXImageTransform.Microsoft.Alpha(opacity=75);
+    filter : alpha(opacity=75);
+    opacity : 0.75;
+}
+
+.snake-toast > p {
+    padding: 10px;
+	font-size: 15px;
+}
+
+.snake-game-wrapper {
+    margin: auto;
+}
+
+.snake-game-wrapper > .snake-game, .snake-area {
+    border: none;
+    border: 1px solid black;
+    background: url('../i/context.png') repeat;
+    margin: 5px;
+	min-height: 200px;
+}
+
+.snake-game-wrapper canvas {
+	image-rendering: optimizeSpeed;
+	image-rendering: -moz-crisp-edges;
+	image-rendering: -webkit-optimize-contrast;
+	image-rendering: -o-crisp-edges;
+	image-rendering: optimize-contrast;
+	-ms-interpolation-mode: nearest-neighbor;
+	width: 0px;
+	height: 0px; /** loading level will change these values */
+	background-color: black; 
+	margin: 0; padding: 0; 
+	border: none;
+	position: relative;
+}
+
+.snake-panel {
+	border: 1px solid black;
+	margin: 5px;
+}
+
+#snake-map-conf  .snake-map-size {
+	width: 30px;
+	text-align: center;
+}
+
+#snake-map-tools  .snake-cell {
+	border: 1px solid white;
+	margin: 1px;
+}
+
+#snake-map-tools  .snake-tool-rotate {
+    background: transparent url('../i/rotate.png') 0 0 no-repeat;
+}
+
+#snake-map-tools .snake-tool-selected {
+	border: 1px solid red;
+}
