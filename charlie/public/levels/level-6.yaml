@@ -1,0 +1,75 @@
+name: "level-6"
+width: 10
+height: 10
+snakes:
+  - id: 1
+    x: 1
+    y: 0
+    direction: right
+  - id: 2
+    x: 9
+    y: 0
+    direction: down
+  - id: 4
+    x: 1
+    y: 8
+    direction: up
+  - id: 3
+    x: 9
+    y: 8
+    direction: left
+walls:
+  - { x: 0, y: 0, type: corner }
+  - { x: 0, y: 1, type: corner }
+  - { x: 2, y: 1, type: corner }
+  - { x: 3, y: 1, type: horizontal }
+  - { x: 4, y: 1, type: horizontal }
+  - { x: 5, y: 1, type: horizontal }
+  - { x: 6, y: 1, type: corner }
+  - { x: 7, y: 1, type: horizontal }
+  - { x: 8, y: 1, type: corner }
+  - { x: 0, y: 2, type: vertical }
+  - { x: 8, y: 2, type: vertical }
+  - { x: 0, y: 3, type: corner }
+  - { x: 2, y: 3, type: corner }
+  - { x: 3, y: 3, type: horizontal }
+  - { x: 4, y: 3, type: horizontal }
+  - { x: 5, y: 3, type: horizontal }
+  - { x: 6, y: 3, type: corner }
+  - { x: 8, y: 3, type: corner }
+  - { x: 0, y: 4, type: vertical }
+  - { x: 2, y: 4, type: vertical }
+  - { x: 6, y: 4, type: vertical }
+  - { x: 8, y: 4, type: vertical }
+  - { x: 0, y: 5, type: vertical }
+  - { x: 2, y: 5, type: vertical }
+  - { x: 4, y: 5, type: corner }
+  - { x: 5, y: 5, type: horizontal }
+  - { x: 6, y: 5, type: corner }
+  - { x: 8, y: 5, type: vertical }
+  - { x: 0, y: 6, type: vertical }
+  - { x: 2, y: 6, type: vertical }
+  - { x: 8, y: 6, type: vertical }
+  - { x: 0, y: 7, type: corner }
+  - { x: 2, y: 7, type: corner }
+  - { x: 3, y: 7, type: horizontal }
+  - { x: 4, y: 7, type: horizontal }
+  - { x: 5, y: 7, type: horizontal }
+  - { x: 6, y: 7, type: corner }
+  - { x: 7, y: 7, type: horizontal }
+  - { x: 8, y: 7, type: corner }
+  - { x: 0, y: 8, type: vertical }
+  - { x: 0, y: 9, type: corner }
+  - { x: 1, y: 9, type: horizontal }
+  - { x: 2, y: 9, type: corner }
+  - { x: 3, y: 9, type: horizontal }
+  - { x: 4, y: 9, type: horizontal }
+  - { x: 5, y: 9, type: horizontal }
+  - { x: 6, y: 9, type: corner }
+  - { x: 7, y: 9, type: horizontal }
+  - { x: 8, y: 9, type: corner }
+  - { x: 9, y: 9, type: corner }
+portals:
+  - { id: 1, x: 5, y: 4 }
+foodSpawns:
+  - { id: 1, x: 2, y: 0 }

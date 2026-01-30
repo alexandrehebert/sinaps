@@ -1,0 +1,18 @@
+{
+  "name": "charlie-snake",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@types/js-yaml": "^4.0.9",
+    "typescript": "^5.3.0",
+    "vite": "^7.3.1"
+  },
+  "dependencies": {
+    "js-yaml": "^4.1.1"
+  }
+}

@@ -1,0 +1,218 @@
+name: "level-8"
+width: 23
+height: 23
+snakes:
+  - id: 1
+    x: 7
+    y: 1
+    direction: right
+  - id: 2
+    x: 5
+    y: 2
+    direction: right
+  - id: 3
+    x: 3
+    y: 3
+    direction: right
+  - id: 4
+    x: 1
+    y: 4
+    direction: right
+walls:
+  - { x: 0, y: 0, type: corner }
+  - { x: 1, y: 0, type: horizontal }
+  - { x: 2, y: 0, type: horizontal }
+  - { x: 3, y: 0, type: horizontal }
+  - { x: 4, y: 0, type: horizontal }
+  - { x: 5, y: 0, type: horizontal }
+  - { x: 6, y: 0, type: horizontal }
+  - { x: 7, y: 0, type: horizontal }
+  - { x: 8, y: 0, type: horizontal }
+  - { x: 9, y: 0, type: horizontal }
+  - { x: 10, y: 0, type: horizontal }
+  - { x: 11, y: 0, type: horizontal }
+  - { x: 12, y: 0, type: horizontal }
+  - { x: 13, y: 0, type: horizontal }
+  - { x: 14, y: 0, type: horizontal }
+  - { x: 15, y: 0, type: horizontal }
+  - { x: 16, y: 0, type: horizontal }
+  - { x: 17, y: 0, type: horizontal }
+  - { x: 18, y: 0, type: horizontal }
+  - { x: 19, y: 0, type: horizontal }
+  - { x: 20, y: 0, type: horizontal }
+  - { x: 21, y: 0, type: horizontal }
+  - { x: 22, y: 0, type: corner }
+  - { x: 22, y: 1, type: vertical }
+  - { x: 22, y: 2, type: vertical }
+  - { x: 22, y: 3, type: vertical }
+  - { x: 22, y: 4, type: vertical }
+  - { x: 0, y: 5, type: corner }
+  - { x: 1, y: 5, type: horizontal }
+  - { x: 2, y: 5, type: horizontal }
+  - { x: 3, y: 5, type: horizontal }
+  - { x: 4, y: 5, type: horizontal }
+  - { x: 5, y: 5, type: horizontal }
+  - { x: 6, y: 5, type: horizontal }
+  - { x: 7, y: 5, type: horizontal }
+  - { x: 8, y: 5, type: horizontal }
+  - { x: 9, y: 5, type: horizontal }
+  - { x: 10, y: 5, type: horizontal }
+  - { x: 11, y: 5, type: horizontal }
+  - { x: 12, y: 5, type: horizontal }
+  - { x: 13, y: 5, type: horizontal }
+  - { x: 14, y: 5, type: horizontal }
+  - { x: 15, y: 5, type: horizontal }
+  - { x: 16, y: 5, type: horizontal }
+  - { x: 17, y: 5, type: horizontal }
+  - { x: 18, y: 5, type: corner }
+  - { x: 22, y: 5, type: vertical }
+  - { x: 0, y: 6, type: vertical }
+  - { x: 18, y: 6, type: vertical }
+  - { x: 22, y: 6, type: vertical }
+  - { x: 0, y: 7, type: vertical }
+  - { x: 2, y: 7, type: corner }
+  - { x: 3, y: 7, type: horizontal }
+  - { x: 4, y: 7, type: corner }
+  - { x: 6, y: 7, type: corner }
+  - { x: 8, y: 7, type: corner }
+  - { x: 10, y: 7, type: corner }
+  - { x: 12, y: 7, type: corner }
+  - { x: 14, y: 7, type: corner }
+  - { x: 16, y: 7, type: corner }
+  - { x: 17, y: 7, type: horizontal }
+  - { x: 18, y: 7, type: vertical }
+  - { x: 22, y: 7, type: vertical }
+  - { x: 0, y: 8, type: vertical }
+  - { x: 18, y: 8, type: vertical }
+  - { x: 22, y: 8, type: vertical }
+  - { x: 0, y: 9, type: vertical }
+  - { x: 2, y: 9, type: corner }
+  - { x: 4, y: 9, type: corner }
+  - { x: 5, y: 9, type: horizontal }
+  - { x: 6, y: 9, type: corner }
+  - { x: 8, y: 9, type: corner }
+  - { x: 10, y: 9, type: corner }
+  - { x: 12, y: 9, type: corner }
+  - { x: 14, y: 9, type: corner }
+  - { x: 16, y: 9, type: corner }
+  - { x: 18, y: 9, type: vertical }
+  - { x: 22, y: 9, type: vertical }
+  - { x: 0, y: 10, type: vertical }
+  - { x: 18, y: 10, type: vertical }
+  - { x: 22, y: 10, type: vertical }
+  - { x: 0, y: 11, type: vertical }
+  - { x: 2, y: 11, type: corner }
+  - { x: 4, y: 11, type: corner }
+  - { x: 6, y: 11, type: corner }
+  - { x: 7, y: 11, type: horizontal }
+  - { x: 8, y: 11, type: corner }
+  - { x: 10, y: 11, type: corner }
+  - { x: 12, y: 11, type: corner }
+  - { x: 14, y: 11, type: corner }
+  - { x: 16, y: 11, type: corner }
+  - { x: 18, y: 11, type: vertical }
+  - { x: 22, y: 11, type: vertical }
+  - { x: 0, y: 12, type: vertical }
+  - { x: 18, y: 12, type: vertical }
+  - { x: 22, y: 12, type: vertical }
+  - { x: 0, y: 13, type: vertical }
+  - { x: 2, y: 13, type: corner }
+  - { x: 4, y: 13, type: corner }
+  - { x: 6, y: 13, type: corner }
+  - { x: 8, y: 13, type: corner }
+  - { x: 9, y: 13, type: horizontal }
+  - { x: 10, y: 13, type: corner }
+  - { x: 12, y: 13, type: corner }
+  - { x: 14, y: 13, type: corner }
+  - { x: 16, y: 13, type: corner }
+  - { x: 18, y: 13, type: vertical }
+  - { x: 22, y: 13, type: vertical }
+  - { x: 0, y: 14, type: vertical }
+  - { x: 18, y: 14, type: vertical }
+  - { x: 22, y: 14, type: vertical }
+  - { x: 0, y: 15, type: vertical }
+  - { x: 2, y: 15, type: corner }
+  - { x: 4, y: 15, type: corner }
+  - { x: 6, y: 15, type: corner }
+  - { x: 8, y: 15, type: corner }
+  - { x: 10, y: 15, type: corner }
+  - { x: 11, y: 15, type: horizontal }
+  - { x: 12, y: 15, type: corner }
+  - { x: 14, y: 15, type: corner }
+  - { x: 16, y: 15, type: corner }
+  - { x: 18, y: 15, type: vertical }
+  - { x: 22, y: 15, type: vertical }
+  - { x: 0, y: 16, type: vertical }
+  - { x: 18, y: 16, type: vertical }
+  - { x: 22, y: 16, type: vertical }
+  - { x: 0, y: 17, type: vertical }
+  - { x: 2, y: 17, type: corner }
+  - { x: 4, y: 17, type: corner }
+  - { x: 6, y: 17, type: corner }
+  - { x: 8, y: 17, type: corner }
+  - { x: 10, y: 17, type: corner }
+  - { x: 12, y: 17, type: corner }
+  - { x: 13, y: 17, type: horizontal }
+  - { x: 14, y: 17, type: corner }
+  - { x: 16, y: 17, type: corner }
+  - { x: 17, y: 17, type: horizontal }
+  - { x: 18, y: 17, type: vertical }
+  - { x: 22, y: 17, type: vertical }
+  - { x: 0, y: 18, type: vertical }
+  - { x: 18, y: 18, type: vertical }
+  - { x: 22, y: 18, type: vertical }
+  - { x: 0, y: 19, type: vertical }
+  - { x: 2, y: 19, type: corner }
+  - { x: 4, y: 19, type: corner }
+  - { x: 5, y: 19, type: horizontal }
+  - { x: 6, y: 19, type: horizontal }
+  - { x: 7, y: 19, type: horizontal }
+  - { x: 8, y: 19, type: horizontal }
+  - { x: 9, y: 19, type: horizontal }
+  - { x: 10, y: 19, type: horizontal }
+  - { x: 11, y: 19, type: horizontal }
+  - { x: 12, y: 19, type: horizontal }
+  - { x: 13, y: 19, type: horizontal }
+  - { x: 14, y: 19, type: horizontal }
+  - { x: 15, y: 19, type: horizontal }
+  - { x: 16, y: 19, type: horizontal }
+  - { x: 17, y: 19, type: horizontal }
+  - { x: 18, y: 19, type: corner }
+  - { x: 22, y: 19, type: vertical }
+  - { x: 0, y: 20, type: vertical }
+  - { x: 22, y: 20, type: vertical }
+  - { x: 0, y: 21, type: vertical }
+  - { x: 22, y: 21, type: vertical }
+  - { x: 0, y: 22, type: corner }
+  - { x: 1, y: 22, type: horizontal }
+  - { x: 2, y: 22, type: horizontal }
+  - { x: 3, y: 22, type: horizontal }
+  - { x: 4, y: 22, type: horizontal }
+  - { x: 5, y: 22, type: horizontal }
+  - { x: 6, y: 22, type: horizontal }
+  - { x: 7, y: 22, type: horizontal }
+  - { x: 8, y: 22, type: horizontal }
+  - { x: 9, y: 22, type: horizontal }
+  - { x: 10, y: 22, type: horizontal }
+  - { x: 11, y: 22, type: horizontal }
+  - { x: 12, y: 22, type: horizontal }
+  - { x: 13, y: 22, type: horizontal }
+  - { x: 14, y: 22, type: horizontal }
+  - { x: 15, y: 22, type: horizontal }
+  - { x: 16, y: 22, type: horizontal }
+  - { x: 17, y: 22, type: horizontal }
+  - { x: 18, y: 22, type: horizontal }
+  - { x: 19, y: 22, type: horizontal }
+  - { x: 20, y: 22, type: horizontal }
+  - { x: 21, y: 22, type: horizontal }
+  - { x: 22, y: 22, type: corner }
+portals:
+  - { id: 1, x: 17, y: 6 }
+  - { id: 2, x: 17, y: 10 }
+  - { id: 3, x: 17, y: 14 }
+  - { id: 4, x: 17, y: 18 }
+foodSpawns:
+  - { id: 1, x: 0, y: 1 }
+  - { id: 2, x: 0, y: 2 }
+  - { id: 3, x: 0, y: 3 }
+  - { id: 4, x: 0, y: 4 }

@@ -1,0 +1,26 @@
+name: "level-1"
+width: 30
+height: 20
+snakes:
+  - id: 1
+    x: 0
+    y: 0
+    direction: right
+  - id: 2
+    x: 19
+    y: 0
+    direction: down
+  - id: 4
+    x: 0
+    y: 19
+    direction: up
+  - id: 3
+    x: 19
+    y: 19
+    direction: left
+walls:
+  []
+portals:
+  []
+foodSpawns:
+  - { id: 0, x: 10, y: 0 }

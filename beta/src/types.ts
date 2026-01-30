@@ -9,6 +9,7 @@ export type Boundaries = {
   height: number
 }
 
-export type FruitType = 'banana' | 'cherry' | 'strawberry' | 'kiwi' | 'cannibal'
+export type FruitType = 'banana' | 'cherry' | 'strawberry' | 'kiwi'
+export type EdibleType = FruitType | 'cannibal'
 
 export type PortalType = 'in' | 'in-body' | 'in-tail' | 'out' | 'out-head' | 'out-tail' | 'out-turn-left' | 'out-turn-right'

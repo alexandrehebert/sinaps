@@ -10,10 +10,10 @@ export const KeyCodes: {
 }
 
 export const SnakeColors = {
-  GREEN:  0x008A65,
-  PURPLE: 0xC543C3,
-  ORANGE: 0xFF836A,
-  BLUE:   0x007EB0,
+  GREEN:  0x008A63,
+  PURPLE: 0xB766C9,
+  ORANGE: 0xD4685B,
+  BLUE:   0x2C6ACE,
 }
 
 export const DIRECTIONS: Direction[] = ['left', 'up', 'right', 'down']

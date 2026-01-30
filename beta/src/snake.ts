@@ -3,17 +3,97 @@ import { MultiColorReplaceFilter } from "pixi-filters";
 import {
   Boundaries,
   Coordinates,
-  Direction,
+  Direction, EdibleType,
   FruitType,
   PartType, PortalType
 } from './types';
 import {
   compareCoordinates,
+  randInt,
   toAngle,
   toCoordinates,
   toPartType,
   toPosition
 } from "./helpers";
+
+export class WorldMap extends Container {
+  private land: { [coords: string]: boolean } = {}
+  private _edibles = new Container()
+  private _portals = new Container()
+  private _snakes = new Container()
+
+  get edibles() {
+    return this._edibles.children as Edible[]
+  }
+  get portals() {
+    return this._portals.children as Portal[]
+  }
+  get snakes() {
+    return this._snakes.children as Snake[]
+  }
+
+  constructor(
+    public readonly bounds: Boundaries,
+    public readonly backgroundColor: number,
+    public readonly borderColor: number,
+  ) {
+    super();
+    for (let i = 0; i < bounds.width; i++) {
+      for (let j = 0; j < bounds.height; j++)
+        this.land[`${i}-${j}`] = false
+    }
+    this.addChild(this._snakes, this._edibles, this._portals)
+  }
+
+  enterLand = (coordinates: Coordinates) => {
+    const occupied = this.land[`${coordinates.x}-${coordinates.y}`]
+    if (occupied) return false
+    this.land[`${coordinates.x}-${coordinates.y}`] = true
+    return true
+  }
+
+  leaveLand = (coordinates: Coordinates) => {
+    const occupied = this.land[`${coordinates.x}-${coordinates.y}`]
+    if (!occupied) return false
+    this.land[`${coordinates.x}-${coordinates.y}`] = false
+    return true
+  }
+
+  addSnake = (...snakes: Snake[]) => {
+    for (const snake of snakes)
+      for (const part of snake.parts)
+        this.enterLand(part.coordinates)
+    this._snakes.addChild(...snakes)
+  }
+
+  addEdible = (...edibles: Edible[]) => {
+    for (const edible of edibles)
+      this.enterLand(edible.coordinates)
+    this._edibles.addChild(...edibles)
+  }
+
+  eat = (edible: Edible) => {
+    this.leaveLand(edible.coordinates)
+    this._edibles.removeChild(edible)
+  }
+
+  produce = () => {
+    const freeLand = Object.entries(this.land)
+      .filter(([_, occupied]) => !occupied)
+    const [freeSpot] = freeLand[randInt(freeLand.length)]
+    if (!freeLand) return
+    const [x, y] = freeSpot.split('-').map(Number)
+    this.addEdible(new Fruit('banana', { coordinates: { x, y } }))
+  }
+
+  addPortal = (...portals: Portal[]) => {
+    for (const portal of portals) {
+      this.enterLand(portal.go.coordinates)
+      this.enterLand(portal.to.coordinates)
+    }
+    this._portals.addChild(...portals)
+  }
+}
 
 type SnakePartProps = {
   direction: Direction,
@@ -60,14 +140,19 @@ export class SnakePart extends AnimatedSprite {
 export class SnakeHead extends SnakePart {
   constructor(options: SnakePartProps) {
     super('head', { ...options }, [
+      Texture.from(`sprites/snake-head-1.png`),
+      Texture.from(`sprites/snake-head-1.png`),
+      Texture.from(`sprites/snake-head-1.png`),
+      Texture.from(`sprites/snake-head-2.png`),
       Texture.from(`sprites/snake-head-3.png`),
       Texture.from(`sprites/snake-head-2.png`),
       Texture.from(`sprites/snake-head-1.png`),
       Texture.from(`sprites/snake-head-2.png`),
     ]);
-    this.animationSpeed = 1000
+    this.animationSpeed = .05
     this.play()
   }
+  override onFrameChange = () => {}
 }
 
 export class SnakeTail extends SnakePart {
@@ -76,10 +161,9 @@ export class SnakeTail extends SnakePart {
       Texture.from(`sprites/snake-tail.png`),
       Texture.from(`sprites/snake-tail.png`),
     ]);
-    this.animationSpeed = 1000
+    this.animationSpeed = .04
     this.play()
   }
-
   override onFrameChange = () => {
     this.scale.y *= -1
   }
@@ -88,8 +172,6 @@ export class SnakeTail extends SnakePart {
 
 export class Snake extends Container {
   private _food?: Coordinates
-  public readonly color: number
-  private readonly _mapBounds: Boundaries
 
   get direction(): Direction {
     return (this.children[0] as SnakePart).direction
@@ -103,19 +185,19 @@ export class Snake extends Container {
     return this.getChildAt(this.children.length - 1) as SnakePart
   }
 
-  constructor({
-    color,
-    parts,
-    bounds
-  }: { color: number, parts: SnakePart[], bounds: Boundaries }) {
+  get parts(): SnakePart[] {
+    return this.children as SnakePart[]
+  }
+
+  constructor(
+    private readonly worldMap: WorldMap,
+    public readonly color: number,
+    parts: SnakePart[]
+  ) {
     super();
-
-    this._mapBounds = bounds
-    this.color = color
-
     this.filters = [new MultiColorReplaceFilter([
       [0xFFFFFF, color],
-      [0x999999, 0x222222],
+      [0x999999, worldMap.borderColor],
     ])]
     this.position.set(50, 50)
     this.addChild(...parts)
@@ -126,14 +208,17 @@ export class Snake extends Container {
       const lastPart = this.removeChildAt(this.children.length - 2) as SnakePart
       const tail = this.tail
       tail.move(lastPart.coordinates, lastPart.direction)
+      this.worldMap.leaveLand(lastPart.coordinates)
     }
     const head = this.head
     const bodyPart = toPartType(head.direction, direction)
+    const to = toCoordinates(head.coordinates, this.worldMap.bounds, direction)
     this.addChildAt(new SnakePart(this._food && bodyPart === 'body' ? 'food' : bodyPart, {
       direction,
       coordinates: { ...head.coordinates }
     }), 1)
-    head.move(toCoordinates(head.coordinates, this._mapBounds, direction), direction)
+    head.move(to, direction)
+    this.worldMap.enterLand(to)
     delete this._food
   }
 
@@ -156,7 +241,7 @@ export class Snake extends Container {
 }
 
 export interface Edible extends Sprite {
-  readonly type: FruitType
+  readonly type: EdibleType
   get coordinates(): Coordinates
 }
 
@@ -177,17 +262,20 @@ export class Fruit extends Sprite implements Edible {
 }
 
 export class Cannibal extends Sprite implements Edible {
-  public readonly type: FruitType = 'cannibal'
+  public readonly type: EdibleType = 'cannibal'
 
   get coordinates() {
     return { ...this.options.coordinates }
   }
 
-  constructor(private readonly options: { coordinates: Coordinates, direction: Direction, color: number }) {
+  constructor(
+    worldMap: WorldMap,
+    private readonly options: { coordinates: Coordinates, direction: Direction, color: number }
+  ) {
     super(Texture.from(`sprites/fruit-cannibal.png`));
     this.filters = [new MultiColorReplaceFilter([
       [0xFFFFFF, options.color],
-      [0x999999, 0x222222],
+      [0x999999, worldMap.borderColor],
     ])]
     this.anchor.set(.5, .5)
     this.angle = toAngle(options.direction)
@@ -196,49 +284,54 @@ export class Cannibal extends Sprite implements Edible {
 }
 
 export class Portal extends Sprite {
-  private _snake?: Snake
-  private _wrong?: boolean
+  private jumping?: Snake
+  private wrongSide?: boolean
 
-  constructor(public readonly go: PortalDoor, public readonly to: PortalDoor, backgroundColor: number) {
+  private toBackground = new Sprite(Texture.WHITE)
+  private goBackground = new Sprite(Texture.WHITE)
+
+  constructor(
+    private readonly worldMap: WorldMap,
+    public readonly go: PortalDoor,
+    public readonly to: PortalDoor,
+  ) {
     super();
     this.position.set(50, 50)
-    const goBackground = new Sprite(Texture.WHITE)
-    goBackground.tint = backgroundColor
-    goBackground.width = 100
-    goBackground.height = 100
-    goBackground.position.set(...toPosition(go.coordinates).map(p => p - 50))
-    goBackground.addChild(go)
-    const toBackground = new Sprite(Texture.WHITE)
-    toBackground.tint = backgroundColor
-    toBackground.width = 100
-    toBackground.height = 100
-    toBackground.position.set(...toPosition(to.coordinates).map(p => p - 50))
-    toBackground.addChild(to)
-    this.addChild(goBackground, toBackground, go, to)
+    this.goBackground.tint = worldMap.backgroundColor
+    this.goBackground.width = 100
+    this.goBackground.height = 100
+    this.goBackground.position.set(...toPosition(go.coordinates).map(p => p - 50))
+    this.goBackground.addChild(go)
+    this.toBackground.tint = worldMap.backgroundColor
+    this.toBackground.width = 100
+    this.toBackground.height = 100
+    this.toBackground.position.set(...toPosition(to.coordinates).map(p => p - 50))
+    this.toBackground.addChild(to)
+    this.addChild(this.goBackground, this.toBackground, go, to)
   }
 
   public beginJump(snake: Snake, wrong: boolean = false) {
     this.filters = [new MultiColorReplaceFilter([
       [0xFFFFFF, snake.color],
-      [0x999999, 0x222222],
+      [0x999999, this.worldMap.borderColor],
     ])]
-    this._snake = snake
-    this._wrong = wrong
+    this.jumping = snake
+    this.wrongSide = wrong
   }
 
   public redraw(): void {
-    const part = !this._snake
+    const part = !this.jumping
       ? null
-      : this._snake.children.find((p) => compareCoordinates((p as SnakePart).coordinates, this.to.coordinates)) as SnakePart
+      : this.jumping.children.find((p) => compareCoordinates((p as SnakePart).coordinates, this.to.coordinates)) as SnakePart
 
-    if (!part || !this._snake) {
+    if (!part || !this.jumping) {
       this.go.texture = Texture.from(`sprites/portal-in.png`)
       this.to.texture = Texture.from(`sprites/portal-out.png`)
-      delete this._snake
+      delete this.jumping
       return
     }
 
-    if (this._wrong) {
+    if (this.wrongSide) {
       this.to.texture = Texture.from(`sprites/portal-out-${part.type}.png`)
       this.to.angle = toAngle(part.direction)
       return
@@ -254,11 +347,11 @@ export class Portal extends Sprite {
 
     if (part.type === 'tail') {
       this.go.texture = Texture.from(`sprites/portal-in-tail.png`)
-      delete this._snake
+      delete this.jumping
       return
     }
 
-    const nextPart = this._snake.children[this._snake.children.indexOf(part)] as SnakePart
+    const nextPart = this.jumping.children[this.jumping.children.indexOf(part)] as SnakePart
     if (nextPart) {
       const inType = nextPart.type === 'tail' ? 'tail' : 'body'
       this.go.texture = Texture.from(`sprites/portal-in-${inType}.png`)
@@ -287,17 +380,5 @@ export class PortalDoor extends Sprite {
     this._coordinates = coordinates
     this.anchor.set(.5, .5)
     this.position.set(...toPosition(coordinates))
-  }
-}
-
-export class Fruits extends Sprite {
-  constructor() {
-    super();
-  }
-}
-
-export class Portals extends Sprite {
-  constructor() {
-    super();
   }
 }

@@ -1,0 +1,53 @@
+name: "level-4"
+width: 30
+height: 20
+snakes:
+  - id: 1
+    x: 16
+    y: 7
+    direction: right
+  - id: 2
+    x: 23
+    y: 7
+    direction: down
+  - id: 4
+    x: 16
+    y: 12
+    direction: up
+  - id: 3
+    x: 23
+    y: 12
+    direction: left
+walls:
+  - { x: 1, y: 1, type: corner }
+  - { x: 38, y: 1, type: corner }
+  - { x: 3, y: 3, type: corner }
+  - { x: 36, y: 3, type: corner }
+  - { x: 5, y: 5, type: corner }
+  - { x: 34, y: 5, type: corner }
+  - { x: 7, y: 7, type: corner }
+  - { x: 32, y: 7, type: corner }
+  - { x: 11, y: 8, type: corner }
+  - { x: 19, y: 8, type: corner }
+  - { x: 13, y: 9, type: corner }
+  - { x: 17, y: 9, type: corner }
+  - { x: 24, y: 9, type: corner }
+  - { x: 30, y: 9, type: corner }
+  - { x: 9, y: 10, type: corner }
+  - { x: 15, y: 10, type: corner }
+  - { x: 22, y: 10, type: corner }
+  - { x: 26, y: 10, type: corner }
+  - { x: 20, y: 11, type: corner }
+  - { x: 28, y: 11, type: corner }
+  - { x: 7, y: 12, type: corner }
+  - { x: 32, y: 12, type: corner }
+  - { x: 5, y: 14, type: corner }
+  - { x: 34, y: 14, type: corner }
+  - { x: 3, y: 16, type: corner }
+  - { x: 36, y: 16, type: corner }
+  - { x: 1, y: 18, type: corner }
+  - { x: 38, y: 18, type: corner }
+portals:
+  []
+foodSpawns:
+  []

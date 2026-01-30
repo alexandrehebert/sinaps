@@ -1,0 +1,75 @@
+name: "level-2"
+width: 30
+height: 20
+snakes:
+  - id: 3
+    x: 19
+    y: 8
+    direction: left
+  - id: 1
+    x: 0
+    y: 9
+    direction: right
+  - id: 2
+    x: 19
+    y: 10
+    direction: left
+  - id: 4
+    x: 0
+    y: 11
+    direction: right
+walls:
+  - { x: 9, y: 0, type: corner }
+  - { x: 9, y: 1, type: vertical }
+  - { x: 9, y: 2, type: vertical }
+  - { x: 9, y: 3, type: vertical }
+  - { x: 9, y: 4, type: vertical }
+  - { x: 9, y: 5, type: vertical }
+  - { x: 9, y: 6, type: vertical }
+  - { x: 9, y: 7, type: vertical }
+  - { x: 9, y: 8, type: corner }
+  - { x: 10, y: 8, type: corner }
+  - { x: 8, y: 9, type: corner }
+  - { x: 9, y: 9, type: corner }
+  - { x: 10, y: 9, type: corner }
+  - { x: 11, y: 9, type: corner }
+  - { x: 12, y: 9, type: horizontal }
+  - { x: 13, y: 9, type: horizontal }
+  - { x: 14, y: 9, type: horizontal }
+  - { x: 15, y: 9, type: horizontal }
+  - { x: 16, y: 9, type: horizontal }
+  - { x: 17, y: 9, type: horizontal }
+  - { x: 18, y: 9, type: horizontal }
+  - { x: 19, y: 9, type: corner }
+  - { x: 0, y: 10, type: corner }
+  - { x: 1, y: 10, type: horizontal }
+  - { x: 2, y: 10, type: horizontal }
+  - { x: 3, y: 10, type: horizontal }
+  - { x: 4, y: 10, type: horizontal }
+  - { x: 5, y: 10, type: horizontal }
+  - { x: 6, y: 10, type: horizontal }
+  - { x: 7, y: 10, type: horizontal }
+  - { x: 8, y: 10, type: corner }
+  - { x: 9, y: 10, type: corner }
+  - { x: 10, y: 10, type: corner }
+  - { x: 11, y: 10, type: corner }
+  - { x: 9, y: 11, type: corner }
+  - { x: 10, y: 11, type: corner }
+  - { x: 10, y: 12, type: vertical }
+  - { x: 10, y: 13, type: vertical }
+  - { x: 10, y: 14, type: vertical }
+  - { x: 10, y: 15, type: vertical }
+  - { x: 10, y: 16, type: vertical }
+  - { x: 10, y: 17, type: vertical }
+  - { x: 10, y: 18, type: vertical }
+  - { x: 10, y: 19, type: corner }
+portals:
+  - { id: 1, x: 7, y: 7 }
+  - { id: 2, x: 12, y: 7 }
+  - { id: 4, x: 7, y: 12 }
+  - { id: 3, x: 12, y: 12 }
+foodSpawns:
+  - { id: 1, x: 11, y: 6 }
+  - { id: 4, x: 6, y: 8 }
+  - { id: 2, x: 13, y: 11 }
+  - { id: 3, x: 8, y: 13 }
